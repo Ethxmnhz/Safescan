@@ -1,0 +1,50 @@
+/* Add your styling here */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+input[type="file"] {
+    flex: 1;
+    padding: 0.5rem;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+#result-display {
+    padding: 1rem;
+    border: 1px solid #ccc;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #333;
+    color: #fff;
+}
