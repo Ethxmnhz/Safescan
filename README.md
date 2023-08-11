@@ -36,6 +36,9 @@ Create a file named app.py in your project directory. This file will contain the
 app.py:
 
 
+<pre>
+```python
+    
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -59,7 +62,8 @@ def upload_file():
 if __name__ == '__main__':
     app.run(debug=True)
 
-
+```
+</pre>
 
 
 
