@@ -24,22 +24,11 @@ Install Flask using `pip`, the Python package installer:
 
 pip install flask
 
+4. Create the Backend:
 
-**4. Create the Backend:**
+Create a file named app.py in your project directory. This file will contain the backend code for your website.
 
-Create a file named `app.py` in your project directory. This file will contain the backend code for your website.
-
-**app.py:**
-
-File structure shoud be
-
-malware_scan_website/
-    app.py
-    templates/
-        index.html
-    static/
-        styles.css
-
+app.py:
 
 from flask import Flask, render_template, request
 
@@ -63,15 +52,14 @@ def upload_file():
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
 
-**5. Create the Templates Folder:**
+5. Create the Templates Folder:
 
-Create a folder named `templates` in your project directory. Inside the `templates` folder, create a file named `index.html` with the following content:
+Create a folder named templates in your project directory. Inside the templates folder, create a file named index.html with the following content:
 
-**templates/index.html:**
+templates/index.html:
 
-```html
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,7 +81,19 @@ Create a folder named `templates` in your project directory. Inside the `templat
     </footer>
 </body>
 </html>
-```
+
+
+File structure shoud be
+
+malware_scan_website/
+    app.py
+    templates/
+        index.html
+    static/
+        styles.css
+
+
+
 
 **6. Run the Application:**
 
