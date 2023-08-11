@@ -128,9 +128,9 @@ malware_scan_website/
 
 In your terminal, run the Flask application:
 
-```bash
+
 python app.py
-```
+
 
 Your website will be accessible at `http://127.0.0.1:5000/`. You'll be able to upload files, but remember that the scanning logic is not implemented in this example.
 
@@ -157,7 +157,8 @@ In the backend, we're using Python and the Flask framework. Flask allows us to c
 
 python
 
-
+<pre>
+```python
 # Import necessary modules
 from flask import Flask, render_template, request
 
@@ -186,6 +187,7 @@ def upload_file():
 if __name__ == '__main__':
     app.run(debug=True)
 ```
+</pre>
 
 **3. Understanding the Code:**
 
@@ -212,12 +214,13 @@ Certainly! The `app.py` file (the backend) and the web files (HTML, CSS, and pot
 **1. Flask App Setup:**
 
 In the `app.py` file, you set up a Flask web application using the Flask framework. This application handles incoming requests and responds with appropriate content.
-
+<pre>
 ```python
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
 ```
+</pre>
 
 Here, you import the necessary components from the `flask` package and create an instance of the Flask app named `app`.
 
