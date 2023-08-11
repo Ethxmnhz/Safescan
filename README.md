@@ -38,7 +38,7 @@ app.py:
 
 
     
-'from flask import Flask, render_template, request
+<pre>'from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -59,7 +59,7 @@ def upload_file():
     return result
 if __name__ == '__main__':
     app.run(debug=True)'
-
+</pre>
 
 
 
