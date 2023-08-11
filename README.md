@@ -100,9 +100,9 @@ templates/index.html:
     <footer>
         <p>&copy; 2023 MalwareScanApp</p>
     </footer>
-</body>
+</body>   CODE LOAD NAHI HORA FILE ME JAKE LO
 </htm>-->
-
+CODE LOAD NAHI HORA FILE ME JAKE LO
 ```
 </pre>
 
