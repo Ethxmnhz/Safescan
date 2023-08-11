@@ -31,6 +31,15 @@ Create a file named `app.py` in your project directory. This file will contain t
 
 **app.py:**
 
+File structure shoud be
+
+malware_scan_website/
+    app.py
+    templates/
+        index.html
+    static/
+        styles.css
+
 
 from flask import Flask, render_template, request
 
