@@ -156,6 +156,8 @@ In the backend, we're using Python and the Flask framework. Flask allows us to c
 **2. Creating the Backend Code (app.py):**
 
 python
+
+<pre>
 # Import necessary modules
 from flask import Flask, render_template, request
 
@@ -184,7 +186,7 @@ def upload_file():
 if __name__ == '__main__':
     app.run(debug=True)
 ```
-
+<pre>
 **3. Understanding the Code:**
 
 - We import necessary modules: `Flask` from the `flask` package and other components.
@@ -211,22 +213,22 @@ Certainly! The `app.py` file (the backend) and the web files (HTML, CSS, and pot
 
 In the `app.py` file, you set up a Flask web application using the Flask framework. This application handles incoming requests and responds with appropriate content.
 
-```python
+```python<pre>
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
 ```
-
+<pre>
 Here, you import the necessary components from the `flask` package and create an instance of the Flask app named `app`.
 
 **2. Routing: Connecting URLs to Functions:**
 
 Flask uses routes to map URLs to Python functions. When a user accesses a specific URL, the corresponding function is executed. For example:
-
+<pre>
 ```python
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html')<pre>
 ```
 
 In this code, when a user accesses the root URL ("/"), the `index()` function is executed. The `render_template()` function sends the content of the `index.html` template file as the response.
@@ -234,10 +236,10 @@ In this code, when a user accesses the root URL ("/"), the `index()` function is
 **3. Rendering HTML Templates:**
 
 Flask uses templates to generate dynamic HTML content. Templates are HTML files with placeholders that can be filled in with data. In your `index.html` file, you have placeholders like `{{ result }}`.
-
+<pre>
 ```html
 <div id="result-display">{{ result }}</div>
-```
+```<pre>
 
 When the `render_template()` function is called, Flask replaces these placeholders with actual values and returns the complete HTML content to the browser.
 
@@ -246,10 +248,10 @@ When the `render_template()` function is called, Flask replaces these placeholde
 Static files like CSS and JavaScript enhance the visual and interactive aspects of your website. These files don't change dynamically like templates. Flask serves static files from the `static` folder.
 
 To include CSS in your HTML, you use a link tag with the `href` attribute pointing to the CSS file:
-
+<pre>
 ```html
 <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-```
+```<pre>
 
 Here, `url_for('static', filename='styles.css')` generates a URL to the `styles.css` file in the `static` folder.
 
@@ -258,7 +260,7 @@ Here, `url_for('static', filename='styles.css')` generates a URL to the `styles.
 When a user interacts with the website (e.g., uploads a file), the frontend (HTML and possibly JavaScript) sends a request to the backend (Flask app).
 
 In the `app.py` file, you define routes to handle these requests. For instance, the `/upload` route is defined to handle file upload requests:
-
+<pre>
 ```python
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -269,7 +271,7 @@ def upload_file():
     result = 'File is clean.'
     
     return result
-```
+```<pre>
 
 When a user submits the file upload form, a POST request is sent to the `/upload` route. The `upload_file()` function is executed, and you handle the file and implement the scanning logic.
 
@@ -346,13 +348,13 @@ Here's how you can integrate the VirusTotal API into your `app.py`:
 **1. Install Required Libraries:**
 
 Install the `requests` library, which will help you make HTTP requests to the VirusTotal API. You can install it using:
-
+<pre>
 ```bash
 pip install requests
 ```
-
+<pre>
 **2. Update the `upload_file()` Function:**
-
+<pre>
 ```python
 import requests
 
@@ -388,7 +390,7 @@ def scan_file_with_virustotal(file):
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
+```<pre>
 
 Replace `'YOUR_VIRUSTOTAL_API_KEY'` with your actual VirusTotal API key.
 
