@@ -81,7 +81,7 @@ templates/index.html:
 <pre>
 ```
 
-<!--<!DOCTYPE html>
+<!--<!DOCTYPE htm>
 <html>
 <head>
     <title>Malware Scanning Website</title>
@@ -101,7 +101,7 @@ templates/index.html:
         <p>&copy; 2023 MalwareScanApp</p>
     </footer>
 </body>
-</html>-->
+</htm>-->
 
 ```
 </pre>
