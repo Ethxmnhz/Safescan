@@ -299,5 +299,153 @@ Notify the user of the scan result through your website's user interface or via 
 
 
 
+PENDING STEP 4
+
+
+
+Here's how you can integrate the VirusTotal API into your `app.py`:
+
+**1. Install Required Libraries:**
+
+Install the `requests` library, which will help you make HTTP requests to the VirusTotal API. You can install it using:
+
+```bash
+pip install requests
+```
+
+**2. Update the `upload_file()` Function:**
+
+```python
+import requests
+
+VIRUSTOTAL_API_KEY = 'YOUR_VIRUSTOTAL_API_KEY'
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    uploaded_file = request.files['file']
+    
+    # Save the uploaded file temporarily or directly upload to cloud storage
+
+    # Implement VirusTotal API scanning
+    scan_result = scan_file_with_virustotal(uploaded_file)
+
+    return scan_result
+
+def scan_file_with_virustotal(file):
+    url = 'https://www.virustotal.com/api/v3/files'
+    headers = {
+        'x-apikey': VIRUSTOTAL_API_KEY
+    }
+    files = {'file': (file.filename, file.stream)}
+    
+    response = requests.post(url, headers=headers, files=files)
+    json_response = response.json()
+    
+    if 'data' in json_response:
+        scan_result = json_response['data']['attributes']['last_analysis_stats']
+        result_message = f"Scan Results: {scan_result['malicious']} malicious, {scan_result['suspicious']} suspicious, {scan_result['undetected']} undetected."
+        return result_message
+    else:
+        return "Scan failed."
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+Replace `'YOUR_VIRUSTOTAL_API_KEY'` with your actual VirusTotal API key.
+
+**3. Explanation:**
+
+- We've added the VirusTotal API key as a constant at the top of the script.
+- The `scan_file_with_virustotal()` function sends the uploaded file to the VirusTotal API for scanning. It returns the scan results, including the number of malicious, suspicious, and undetected results.
+- The `upload_file()` function now calls `scan_file_with_virustotal()` to perform the scanning and returns the scan results.
+
+
+
+
+
+
+Full Explanation
+
+
+
+Certainly! Let's break down the code for implementing malware scanning using the VirusTotal API step by step:
+
+**1. Import Required Libraries:**
+
+```python
+import requests
+```
+
+Here, we're importing the `requests` library, which will help us make HTTP requests to the VirusTotal API.
+
+**2. Set Up Your VirusTotal API Key:**
+
+```python
+VIRUSTOTAL_API_KEY = 'YOUR_VIRUSTOTAL_API_KEY'
+```
+
+Replace `'YOUR_VIRUSTOTAL_API_KEY'` with the actual API key you obtained from your VirusTotal account.
+
+**3. Define the `scan_file_with_virustotal()` Function:**
+
+```python
+def scan_file_with_virustotal(file):
+    url = 'https://www.virustotal.com/api/v3/files'
+    headers = {
+        'x-apikey': VIRUSTOTAL_API_KEY
+    }
+    files = {'file': (file.filename, file.stream)}
+    
+    response = requests.post(url, headers=headers, files=files)
+    json_response = response.json()
+    
+    if 'data' in json_response:
+        scan_result = json_response['data']['attributes']['last_analysis_stats']
+        result_message = f"Scan Results: {scan_result['malicious']} malicious, {scan_result['suspicious']} suspicious, {scan_result['undetected']} undetected."
+        return result_message
+    else:
+        return "Scan failed."
+```
+
+This function takes an uploaded file as input, sends it to the VirusTotal API for scanning, and returns the scan results. It does the following:
+
+- Constructs the API URL and headers.
+- Prepares the file to be sent as part of the request.
+- Makes a POST request to the VirusTotal API.
+- Parses the JSON response and extracts the scan results.
+- Returns a formatted message with the scan results.
+
+**4. Update the `upload_file()` Function:**
+
+```python
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    uploaded_file = request.files['file']
+    
+    # Save the uploaded file temporarily or directly upload to cloud storage
+
+    # Implement VirusTotal API scanning
+    scan_result = scan_file_with_virustotal(uploaded_file)
+
+    return scan_result
+```
+
+In the `upload_file()` function:
+
+- The uploaded file is obtained from the request.
+- The `scan_file_with_virustotal()` function is called to scan the file using the VirusTotal API.
+- The scan results are returned and displayed on the website.
+
+**5. Running the Application:**
+
+```python
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+This code ensures that the Flask app runs only when this script is directly executed, not when imported as a module.
+
+
 
 
