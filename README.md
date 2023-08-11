@@ -78,7 +78,8 @@ templates/index.html:
 
 
 
-
+<pre>
+```
 
 <!DOCTYPE html>
 <html>
@@ -102,7 +103,8 @@ templates/index.html:
 </body>
 </html>
 
-
+```
+</pre>
 
 
 
