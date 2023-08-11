@@ -24,7 +24,7 @@ Install Flask using `pip`, the Python package installer:
 
 pip install flask
 
-**4. Create the Backend:
+**4. Create the Backend:**
 
 Create a file named app.py in your project directory. This file will contain the backend code for your website.
 
@@ -53,7 +53,7 @@ def upload_file():
 if __name__ == '__main__':
     app.run(debug=True)
 
-**5. Create the Templates Folder:
+**5. Create the Templates Folder:**
 
 Create a folder named templates in your project directory. Inside the templates folder, create a file named index.html with the following content:
 
