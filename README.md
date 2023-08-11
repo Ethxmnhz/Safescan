@@ -36,10 +36,9 @@ Create a file named app.py in your project directory. This file will contain the
 app.py:
 
 
-<pre>
-```python
+
     
-from flask import Flask, render_template, request
+'from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -51,19 +50,20 @@ def index():
 def upload_file():
     uploaded_file = request.files['file']
     
-    # Implement file handling and scanning logic here
-    # Call your malware scanning API or library
+    Implement file handling and scanning logic here
+    Call your malware scanning API or library
     
-    # Example: Assume the file is clean
+    Example: Assume the file is clean
     result = 'File is clean.'
     
     return result
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True)'
 
-```
-</pre>
+
+
+
+
 
 
 
