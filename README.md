@@ -12,23 +12,29 @@ Make sure you have Python installed on your system. You can check by running `py
 
 Create a new directory for your project and navigate to it in your terminal:
 
-```bash
+
 mkdir malware_scan_website
 cd malware_scan_website
-```
+
 
 **3. Install Flask:**
 
 Install Flask using `pip`, the Python package installer:
-
-
 pip install flask
+
+
 
 **4. Create the Backend:**
 
+
+
 Create a file named app.py in your project directory. This file will contain the backend code for your website.
 
+
+
+
 app.py:
+
 
 from flask import Flask, render_template, request
 
@@ -53,11 +59,21 @@ def upload_file():
 if __name__ == '__main__':
     app.run(debug=True)
 
+
+
+
+
+    
+
 **5. Create the Templates Folder:**
 
 Create a folder named templates in your project directory. Inside the templates folder, create a file named index.html with the following content:
 
+
 templates/index.html:
+
+
+
 
 
 <!DOCTYPE html>
@@ -81,6 +97,13 @@ templates/index.html:
     </footer>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 File structure shoud be
