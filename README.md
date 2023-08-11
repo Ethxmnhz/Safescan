@@ -1,6 +1,6 @@
 # Safescan
 
-ACCESS THE LIVE WEBSITE HERE : 
+ACCESS THE LIVE WEBSITE HERE : https://ethxmnhz.github.io/Safescan/
 
 
 
