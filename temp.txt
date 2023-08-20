@@ -1,0 +1,67 @@
+import os
+from flask import Flask, render_template, request
+
+import requests
+
+app = Flask(__name__)
+
+VIRUSTOTAL_API_KEY = '655ff61776fa5397a152a7ac6a64afcd78041ba664a6cb14659ad66753c0c8f6'
+THRESHOLD = 3
+
+def scan_file_virustotal(file_path):
+    # ... (same as before)
+    url = 'https://www.virustotal.com/vtapi/v2/file/scan'
+    params = {'apikey': VIRUSTOTAL_API_KEY}
+    files = {'file': (os.path.basename(file_path), open(file_path, 'rb'))}
+    
+    response = requests.post(url, files=files, params=params)
+    if response.status_code == 200:
+        result = response.json()
+        scan_id = result.get('scan_id')
+        return scan_id
+    else:
+        print(f"Error scanning file: {file_path}")
+        return None
+
+
+def check_scan_result(scan_id):
+    # ... (same as before)
+    url = f'https://www.virustotal.com/vtapi/v2/file/report'
+    params = {'apikey': VIRUSTOTAL_API_KEY, 'resource': scan_id}
+    
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        result = response.json()
+        positive_engines = result.get('positives', 0)
+        total_engines = result.get('total', 0)
+        return positive_engines, total_engines
+    else:
+        print("Error checking scan result.")
+        return 0, 0
+
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        directory_to_scan = request.form['directory']
+        results = []
+
+        for root, _, files in os.walk(directory_to_scan):
+            for file in files:
+                file_path = os.path.join(root, file)
+                scan_id = scan_file_virustotal(file_path)
+                if scan_id:
+                    positive_engines, total_engines = check_scan_result(scan_id)
+                    if positive_engines >= THRESHOLD:
+                        result = f"Infected file: {file_path}"
+                    else:
+                        result = f"Clean file: {file_path}"
+                    results.append(result)
+
+        return render_template('index.html', results=results)
+
+    return render_template('index.html', results=[])
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
